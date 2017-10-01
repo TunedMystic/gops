@@ -52,7 +52,7 @@ func main() {
 
 	// Print args or defaults.
 	if len(args) > 0 {
-		fmt.Printf("(%d) %v\n", len(args), strings.Join(args, " "))
+		fmt.Printf("%d args: %v\n", len(args), strings.Join(args, " "))
 	} else {
 		printInfo()
 	}
