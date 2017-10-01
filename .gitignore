@@ -2,7 +2,6 @@
 bin/
 vendor/
 misc/
-goreleaser.yml
 
 # Misc
 .DS_Store
