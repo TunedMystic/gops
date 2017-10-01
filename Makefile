@@ -5,7 +5,8 @@ GO=$(shell which go)
 PROJECT_NAME=$(shell echo $${PWD\#\#*/})
 
 # Name of the executable.
-BINARY="bin/${PROJECT_NAME}"
+OUTPUT_DIR=bin
+BINARY="${OUTPUT_DIR}/${PROJECT_NAME}"
 
 # Project Build Metadata.
 VERSION=$(shell git describe --tags $(shell git rev-list --tags --max-count=1))
@@ -48,6 +49,7 @@ vars:
 	@echo "Src files: ${SRC}"
 
 build: $(SRC)
+	@rm -rf ${OUTPUT_DIR} && mkdir -p ${OUTPUT_DIR}
 	@eval go build ${LDFLAGS} -o ${BINARY}
 
 run:
