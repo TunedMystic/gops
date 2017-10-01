@@ -7,11 +7,14 @@ import (
 	"strings"
 )
 
-// Version info.
-var Version string
+// AppVersion info.
+var AppVersion string
 
-// CommitHash info.
-var CommitHash string
+// AppBuild info.
+var AppBuild string
+
+// AppDate info.
+var AppDate string
 
 var args []string
 var help bool
@@ -41,8 +44,9 @@ func main() {
 
 	// Print Version
 	if version == true {
-		fmt.Printf("version: %v\n", Version)
-		fmt.Printf("commit:  %v\n", CommitHash)
+		fmt.Printf("version: %v\n", AppVersion)
+		fmt.Printf("build:  %v\n", AppBuild)
+		fmt.Printf("release date:  %v\n", AppDate)
 		os.Exit(0)
 	}
 

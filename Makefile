@@ -17,10 +17,8 @@ BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 SRC=$(shell find . -type f -name '*.go' -not -path "./vendor/*")
 
 # Use linker flags to provide metadata to the program.
-# LDFLAGS=-ldflags "-s -w -X main.Version=${VERSION} -X main.Build=${BUILD} -X main.Date=${DATE}"
-
-# LDFLAGS="-ldflags '-s -w -X main.Version=${VERSION} -X main.Build=${BUILD} -X main.Date=${DATE}'"
-LDFLAGS=-ldflags "'-s -w -X main.Version=${VERSION} -X main.Build=${BUILD} -X main.Date=${DATE}'"
+# https://goo.gl/Xaj4gZ
+LDFLAGS=-ldflags "'-s -w -X main.AppVersion=${VERSION} -X main.AppBuild=${BUILD} -X main.AppDate=${DATE}'"
 
 .DEFAULT_GOAL := help
 
@@ -48,15 +46,12 @@ vars:
 	@echo "Ldflags: ${LDFLAGS}"
 	@echo "Src files: ${SRC}"
 
-build: $(SRC)
+build: ${SRC}
 	@rm -rf ${OUTPUT_DIR} && mkdir -p ${OUTPUT_DIR}
 	@eval go build ${LDFLAGS} -o ${BINARY}
 
 run:
 	@echo go run ${LDFLAGS} *.go
-
-run2:
-	@eval go run ${LDFLAGS} *.go
 
 clean:
 	@if [ -f ${BINARY} ] ; then rm ${BINARY} ; fi
