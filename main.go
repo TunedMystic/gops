@@ -27,7 +27,7 @@ func init() {
 }
 
 func printInfo() {
-	fmt.Printf("Gops - GOlang Project Sample\n\n")
+	fmt.Printf("Gops - a GOlang Project Sample\n\n")
 	fmt.Printf("Usage: gops [arg]\n\n")
 	fmt.Printf("Flags:\n")
 	flag.PrintDefaults()
